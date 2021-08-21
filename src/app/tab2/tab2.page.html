@@ -1,17 +1,42 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 2
-    </ion-title>
+<ion-header style="margin-bottom: 100px;" [translucent]="true">
+  <ion-toolbar >
+      <label  >
+    
+        <ion-item>
+          <ion-label position="floating">Qual é o nome da tarefa ?</ion-label>
+          <ion-input (ionChange)="change($event)" name="fucus" style="padding: 0;" [(ngModel)]="obj.name"  autofocus="true" class="name"     placeholder="Digite ..."></ion-input>
+        </ion-item>
+  
+        <ion-item>
+          <ion-label   position="floating">Descrição da tarefa ?</ion-label>
+          
+          <ion-textarea  [(ngModel)]="obj.description" rows="1" cols="20" placeholder="digite ..."></ion-textarea>
+        </ion-item>
+  
+        <ion-item lines="none" style="position: relative;" >
+          <ion-label  position="floating">Tem algum tempo estimado ?</ion-label>
+          <ion-input style="padding: 0;" style="width: 60%;" type="date"   [(ngModel)]="obj.date" placeholder="Digite ..."></ion-input>
+          <ion-button (click)="save()" [disabled]="disab" style="width: 100px; margin: 5%;" class="span"> Salvar</ion-button>
+        </ion-item>
+  
+      </label>
   </ion-toolbar>
-</ion-header>
+</ion-header  >
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content >
+<!-- Default textarea -->
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+
+
+   
+
+    
+ 
 </ion-content>
+<ion-footer>
+  <ion-toolbar >
+      <ion-button [disabled]="bool"  (click)="save()" style="width: 60%; margin: auto;" color="success" expand="block">Salvar</ion-button>
+
+  </ion-toolbar>
+</ion-footer>
+

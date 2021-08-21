@@ -1,0 +1,77 @@
+<ion-header  [translucent]="true">
+  <ion-toolbar color="primary">
+    
+    
+    <ion-title>
+      Tarefas Concluídas
+    </ion-title>
+ 
+      <!-- <ion-buttons color="#3171e0" start>
+        <button style="background-color: #3880ff;" ion-button (click)="close()">
+        </button>
+      </ion-buttons> -->
+    
+
+      
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-toolbar>
+    <ion-searchbar [(ngModel)]="filterTerm"  placeholder="Procurar por nomes de tarefas"></ion-searchbar>
+  </ion-toolbar>
+
+<app-explore-container name="Sem tarefas concluídas" *ngIf="data?.length < 1"></app-explore-container>
+  <ion-list>
+    <ion-item
+
+          *ngFor="let item of data  | filter:filterTerm"
+          lines="none"
+          style="position: relative; box-sizing: border-box; "
+          
+          >
+          
+              
+              <label style=" position: relative; margin: 0 0 15%;width: 100%; border: solid black 1px; padding: 0 0 0 5%" >
+                <ion-label style="margin-bottom: 5%; padding: 3% 0 0 0;">
+                  <h2>Nome</h2>
+                  <p  style="text-decoration: line-through" >
+                    {{item?.name || 'Digite o nome'}}
+                  </p>
+            
+                </ion-label>
+              <ion-label style="margin-bottom: 5%;">
+                <h2>Descrição</h2>
+                <p style="padding: 0 15% 0 0; text-decoration: line-through"  >
+                  {{item?.description || 'Sem descrição'}}
+                </p>
+          
+              </ion-label>
+              <ion-label style="margin-bottom: 5%;">
+                <h2>Prazo</h2>
+              <p 
+              style="text-decoration: line-through"
+              >
+
+              
+                {{item?.date | date :  'dd/MM/yyyy'   }} 
+
+              </p>
+              <p  style="text-decoration: line-through" *ngIf="!item.date">{{'Sem prazo'}}</p>
+              </ion-label>
+            
+            </label>
+            
+            <ion-reorder slot="end"></ion-reorder>
+            
+            <!-- <ion-radio slot="start" value="buford"></ion-radio> -->
+            <div class="actions" style="text-align: center;">
+                
+              <ion-icon color="danger" (click)="delete(item)" name="trash-outline"></ion-icon>
+              <ion-icon color="success" name="clipboard-outline" (click)="Noconclud($event,item)"></ion-icon>
+              
+            </div>
+          </ion-item>
+        </ion-list>
+</ion-content>

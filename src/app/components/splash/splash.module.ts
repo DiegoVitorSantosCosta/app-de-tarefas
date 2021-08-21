@@ -1,0 +1,26 @@
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+
+import { IonicModule } from '@ionic/angular';
+
+import { SplashPageRoutingModule } from './splash-routing.module';
+
+import { SplashPage } from './splash.page';
+
+import { ExploreContainerComponent } from '../../explore-container/explore-container.component';
+
+
+@NgModule({
+  imports: [
+  CommonModule,
+    FormsModule,
+    IonicModule,
+    SplashPageRoutingModule
+  ],
+  declarations: [
+    ExploreContainerComponent
+    ,
+    SplashPage]
+})
+export class SplashPageModule {}

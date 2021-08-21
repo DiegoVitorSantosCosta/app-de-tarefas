@@ -1,17 +1,139 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
+<ion-header  [translucent]="true">
+  <ion-toolbar color="primary">
     <ion-title>
-      Tab 1
+      Tarefas
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+<ion-toolbar>
+  <ion-searchbar [(ngModel)]="filterTerm"  placeholder="Procurar por nomes de tarefas"></ion-searchbar>
+</ion-toolbar>
+
+
+  <ion-refresher  (ionRefresh)="doRefresh($event)" slot="fixed" pullFactor="1" pullMin="150" pullMax="400">
+    <ion-refresher-content
+    
+      pullingIcon="chevron-down-circle-outline"
+      pullingText="Puxe para atualizar"
+      refreshingSpinner="circles"
+      refreshingText="Carregando ..."
+      pull-max="500"
+      pull-min="300"
+    ></ion-refresher-content>
+  </ion-refresher>
+
+
+
+  <ion-fab  style="margin-right: 5%; margin-bottom: 5%;" vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="modalCreate()" style="width: 70px; height: 70px;">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+
+  <ion-toolbar>
+    <!-- <ion-segment mod="md" [(ngModel)]="segment" (ionChange)="segmentChanged($event)" > -->
+
+    <ion-item mod="md" >
+      <!-- <ion-segment-button value="0"> -->
+          <ion-label  >
+            Há fazer
+            
+            <ion-badge color="danger">{{ length || 0 }}</ion-badge>
+          </ion-label>
+      <!-- </ion-segment-button> -->
+
+      <!-- <ion-segment-button value="1"> -->
+          <ion-label [routerLink]="['../concluidos']">
+            Concluídas
+            
+            <ion-badge color="success">{{ done || 0 }}</ion-badge>
+          </ion-label>
+      <!-- </ion-segment-button> -->
+      
+    </ion-item>
+
+  </ion-toolbar>
+
+
+
+
+ 
+
+  
+  <app-explore-container  *ngIf='dates?.length < 1' name=" Sem tarefas cadastradas,comece já!">
+
+  </app-explore-container>
+  
+  
+ 
+          <ion-list>
+        <ion-reorder-group   (ionItemReorder)="doReorder($event)" disabled="false">
+
+
+          <ion-item
+
+          *ngFor="let item of dates  | filter:filterTerm"
+          lines="none"
+          style="position: relative; box-sizing: border-box; "
+          
+          >
+          
+              
+              <label (click)="presentModal(item)" style=" position: relative; margin: 0 0 15%;width: 100%; border: solid black 1px; padding: 0 0 0 5%" >
+                <ion-label style="margin-bottom: 5%; padding: 3% 0 0 0;">
+                  <h2>Nome</h2>
+                  <p >
+                    {{item?.name || 'Digite o nome'}}
+                  </p>
+            
+                </ion-label>
+              <ion-label style="margin-bottom: 5%;">
+                <h2>Descrição</h2>
+                <p style="padding: 0 15% 0 0;" >
+                  {{item?.description || 'Sem descrição'}}
+                </p>
+          
+              </ion-label>
+              <ion-label style="margin-bottom: 5%;">
+                <h2>Prazo</h2>
+              <p 
+              >
+
+              
+                {{item?.date | date :  'dd/MM/yyyy'   }} 
+
+              </p>
+              <p *ngIf="!item.date">{{'Sem prazo'}}</p>
+              </ion-label>
+            
+            </label>
+            
+            
+        
+            <div class="actions" style="text-align: center;">
+              
+              <ion-icon color="danger" (click)="delete(item)" name="trash-outline"></ion-icon>
+        <ion-icon color="success div-03" (click)="conclud($event,item)" name="checkmark-circle-outline"></ion-icon>
+              
+            </div>
+            <ion-reorder slot="end"></ion-reorder>
+            
+            <!-- <ion-radio slot="start" value="buford"></ion-radio> -->
+          </ion-item>
+          
+        </ion-reorder-group>
+      </ion-list>
+      <!-- </ion-slide>
+        <ion-slide>
+          <h1>Slide 2</h1>
+        </ion-slide>
+        
+        
+  </ion-slides> -->
+
+
 </ion-content>

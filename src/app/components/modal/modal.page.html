@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    
+      <ion-buttons color="#3171e0" start>
+        <button style="background-color: #3880ff;" ion-button (click)="close()">
+          <ion-icon  style="font-size: 27px; color: white;" name="arrow-back-outline"></ion-icon>
+        </button>
+      </ion-buttons>
+
+    <!-- <ion-title>modal</ion-title> -->
+    
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-list>
+    <ion-item lines="none">
+      
+      <ion-input [(ngModel)]='data.name'  style="font-size: 18px; font-weight: 800;" type="text"  placeholder="Digite um nome para a tarefa"></ion-input>
+    </ion-item>
+
+
+    <ion-item>
+      <ion-label style="font-size: 20px;"  position="floating"> <ion-icon style="font-size: 20px;" name="list-outline"></ion-icon> <h2 style="margin: auto;" *ngIf="data.description.length < 1"> Digite a descrição</h2> </ion-label>
+      
+      <ion-textarea  [(ngModel)]="data.description" rows="7" cols="20"></ion-textarea>
+    </ion-item>
+
+    <ion-item lines="none" style="position: relative;" >
+      <ion-label  position="floating">Tem algum tempo estimado ?</ion-label>
+      <ion-input style="padding: 0;" style="width: 60%;" type="date"[(ngModel)]="data.date" placeholder="Digite ..."></ion-input>
+    </ion-item>
+  
+    
+
+  </ion-list>
+  
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar style="text-align: right;">
+    
+      <ion-button (click)="save()" [disabled]="disab" style="width: 100px; margin: 0 5% 0 0;" class="span"> Salvar </ion-button>
+
+          </ion-toolbar>
+
+
+</ion-footer>
