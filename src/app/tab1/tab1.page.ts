@@ -52,6 +52,13 @@ export class Tab1Page {
     
   ) {
    
+    AppService.paraAtualizarOdone.subscribe(res =>{
+      if(res){
+        this.lengthDone()
+        this.service.adcionarNOconcluido(false)
+
+
+      }})
     AppService.event.subscribe(res => {
       this.data = res
       if(this.data){
@@ -274,7 +281,6 @@ async conclud(event,item){
   toast.present();
   
   this.tarefasConcluidas.push(item)
-  console.log(this.tarefasConcluidas);
   
   const { value }  = await Storage.get({ key: 'tarefasConcluidas'})
   let lengthDone
@@ -296,10 +302,7 @@ async conclud(event,item){
   this.length --;
   this.done = lengthDone;
 
-  this.service
-
-  let a = event.srcElement.parentElement.parentElement
- 
+  this.service 
     
     
   }

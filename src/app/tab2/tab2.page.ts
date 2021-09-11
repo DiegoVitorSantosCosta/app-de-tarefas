@@ -31,7 +31,6 @@ export class Tab2Page {
     private service: AppService
   ) {
     
-    // element.focus();
   }
 
   async get(){
@@ -42,13 +41,6 @@ export class Tab2Page {
     console.log(a);
   }
    ngOnInit() {
-     
-  //   var element =  document.querySelector(".focus")
-  // element.setAttribute("autofocus", "true")
-    
-    // element.focus();
-    
-    
 
   }
 

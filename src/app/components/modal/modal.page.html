@@ -14,10 +14,9 @@
 
 <ion-content>
 
-  <ion-list>
     <ion-item lines="none">
       
-      <ion-input [(ngModel)]='data.name'  style="font-size: 18px; font-weight: 800;" type="text"  placeholder="Digite um nome para a tarefa"></ion-input>
+      <ion-input autofocus="true" [(ngModel)]='data.name'  style="font-size: 18px; font-weight: 800;" type="text"  placeholder="Digite um nome para a tarefa"></ion-input>
     </ion-item>
 
 
@@ -31,10 +30,6 @@
       <ion-label  position="floating">Tem algum tempo estimado ?</ion-label>
       <ion-input style="padding: 0;" style="width: 60%;" type="date"[(ngModel)]="data.date" placeholder="Digite ..."></ion-input>
     </ion-item>
-  
-    
-
-  </ion-list>
   
 </ion-content>
 

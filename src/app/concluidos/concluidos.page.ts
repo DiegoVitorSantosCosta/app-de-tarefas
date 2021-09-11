@@ -13,6 +13,7 @@ import { AppService } from '../services/app.service';
 export class ConcluidosPage implements OnInit {
 
   public booll: boolean = false;
+  public done: any;
   
   constructor(
     private toastController: ToastController,
@@ -20,6 +21,7 @@ export class ConcluidosPage implements OnInit {
     public navCtrl: NavController
     
   ) {  
+    
     AppService.paraAtualizarOdone.subscribe(res => {
       console.log(res);
       
@@ -27,6 +29,8 @@ export class ConcluidosPage implements OnInit {
       
       if(this.booll){
         this.get();
+        console.log('lkjlkj');
+        
         this.booll = false
       }
 
@@ -42,11 +46,12 @@ export class ConcluidosPage implements OnInit {
     const { value } = await Storage.get({ key: 'tarefasConcluidas' });
     console.log(value);
     
-    // let response = await Storage.get({ key:'tarefa' });
-    this.data = JSON.parse(value)
+    if(value != null){
+      this.data = JSON.parse(value)
+  
+      this.service.addIten(this.data.length);
 
-    this.service.addIten(this.data.length);
-    // console.log(this.dates);
+    }
     
   }
 
@@ -72,23 +77,28 @@ export class ConcluidosPage implements OnInit {
 
   async delete(event: any){
 
-    this.toast('Tarefa excluida com sucesso','Ok')
+    this.toast('Tarefa excluida com sucesso','Ok');
 
     let index = this.data.findIndex( index => index.id === event.id);
   
   //  let teste =  await Storage.remove({  });
   Storage.get({ key: 'tarefaConcluidas' }).then(async (response) => {
   
-    let value = JSON.parse(response.value);
-  
+    console.log(response);
     
+    let a = JSON.parse(response.value);
+  
     
     this.data.splice(index, 1);
     await Storage.set({ key: 'tarefasConcluidas', value: JSON.stringify(this.data) });
+
+    this.service.adcionarNOconcluido(true)
+    
   }).catch(err => console.log(err));
   
     
   }
+  
 
   async Noconclud(event,item){
 
