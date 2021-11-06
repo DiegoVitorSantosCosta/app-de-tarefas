@@ -84,15 +84,15 @@
 
           <ion-item-sliding>
     <ion-item-options side="start">
-      <ion-item-option color="danger" expandable>
-        Delete
+      <ion-item-option (click)="delete(item)" color="danger" expandable>
+        Deletar
       </ion-item-option>
     </ion-item-options>
 
-    <ion-item>
+    <ion-item lines="none" style="margin:  5% 0;">
       <div style="display: flex; width: 100%; align-items: center; "  >
 
-        <div style="width: 100%; border: solid 1px rgb(163, 163, 163);"  (click)="presentModal(item)">
+        <div style="width: 100%; border: solid 1px rgb(163, 163, 163); padding: 3%;"  (click)="presentModal(item)">
           <ion-label >
             <h2>Nome</h2>
             <p >
@@ -109,23 +109,12 @@
     </ion-item>
 
     <ion-item-options side="end">
-      <ion-item-option color="tertiary" expandable>
-        Archive
+      <ion-item-option (click)="conclud($event,item)" color="tertiary" expandable>
+        Concluir
       </ion-item-option>
     </ion-item-options>
   </ion-item-sliding>
           
-              
-              
-            
-            
-        
-           <div class="actions" style="text-align: center;">
-              
-              <ion-icon color="danger" (click)="delete(item)" name="trash-outline"></ion-icon>
-               <ion-icon color="success div-03" (click)="conclud($event,item)" name="checkmark-circle-outline"></ion-icon>
-              
-            </div>
             
             <!-- <ion-radio slot="start" value="buford"></ion-radio> -->
           </div>
@@ -133,13 +122,7 @@
         </ion-reorder-group>
         
       </ion-list>
-      <ion-item-sliding>
-        <ion-item-options side="start">
-          <ion-item-option (click)="favorite(item)">Favorite</ion-item-option>
-          <ion-item-option color="danger" (click)="share(item)">Share</ion-item-option>
-        </ion-item-options>
 
-        </ion-item-sliding>
       <!-- </ion-slide>
         <ion-slide>
           <h1>Slide 2</h1>
