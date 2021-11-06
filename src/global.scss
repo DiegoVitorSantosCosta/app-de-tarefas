@@ -28,93 +28,9 @@
 
 // @import "~ionic-color-picker/dist/assets/css/styles";
 .my-custom-modal-css .modal-wrapper {
-    height: 100%;
-    top: 60%;
-    position: absolute; 
-    display: block;  
+    height: 200px;
+    position: absolute;
+    bottom: 0px;
  }
 
- @media (min-height: 706px) and (max-height: 767.98px) { 
-    .my-custom-modal-css .modal-wrapper {
-        height: 40%;
-        top: 77%;
-        position: absolute; 
-        display: block;  
-        margin-bottom: 5%;
-     }
-  }
-
-  @media (min-height: 650px) and (max-height: 705px) { 
-    .my-custom-modal-css .modal-wrapper {
-        height: 40%;
-        top: 75%;
-        position: absolute; 
-        display: block;  
-     }
-  }
-  @media (min-height: 608px) and (max-height: 650px) { 
-    .my-custom-modal-css .modal-wrapper {
-        height: 40%;
-        top: 73%;
-        position: absolute; 
-        display: block;  
-        margin-bottom: 5%;
-     }
-  }
-
-  @media (min-height: 562px) and (max-height: 607px) { 
-    .my-custom-modal-css .modal-wrapper {
-        height: 40%;
-        top: 71%;
-        position: absolute; 
-        display: block;  
-        margin-bottom: 5%;
-     }
-  }
-  @media (min-height: 525px) and (max-height: 561px) { 
-    .my-custom-modal-css .modal-wrapper {
-        height: 40%;
-        top: 69%;
-        position: absolute; 
-        display: block;  
-        margin-bottom: 5%;
-     }
-  }
-  @media (min-height: 500px) and (max-height: 524px) { 
-    .my-custom-modal-css .modal-wrapper {
-        height: 40%;
-        top: 67%;
-        position: absolute; 
-        display: block;  
-        margin-bottom: 5%;
-     }
-  }
-  @media (min-height: 474px) and (max-height: 499px) { 
-    .my-custom-modal-css .modal-wrapper {
-        height: 40%;
-        top: 65%;
-        position: absolute; 
-        display: block;  
-        margin-bottom: 5%;
-     }
-  }
-
-  @media (min-height: 440px) and (max-height: 474px) { 
-    .my-custom-modal-css .modal-wrapper {
-        height: 40%;
-        top: 63%;
-        position: absolute; 
-        display: block;  
-        margin-bottom: 5%;
-     }
-  }
-  @media (min-height: 768px) and (max-height: 820.98px) { 
-    .my-custom-modal-css .modal-wrapper {
-        height: 40%;
-        top: 79%;
-        position: absolute; 
-        display: block;  
-        margin-bottom: 5%;
-     }
-  }
  
