@@ -74,59 +74,72 @@
         <ion-reorder-group   (ionItemReorder)="doReorder($event)" disabled="false">
 
 
-          <ion-item
+          <div
 
           *ngFor="let item of dates  | filter:filterTerm"
           lines="none"
-          style="position: relative; box-sizing: border-box; "
+          style="position: relative; display: flex; box-sizing: border-box; "
           
           >
+
+          <ion-item-sliding>
+    <ion-item-options side="start">
+      <ion-item-option color="danger" expandable>
+        Delete
+      </ion-item-option>
+    </ion-item-options>
+
+    <ion-item>
+      <div style="display: flex; width: 100%; align-items: center; "  >
+
+        <div style="width: 100%; border: solid 1px rgb(163, 163, 163);"  (click)="presentModal(item)">
+          <ion-label >
+            <h2>Nome</h2>
+            <p >
+              {{item?.name || 'Digite o nome'}}
+            </p>
+      
+          </ion-label>
+          
+        </div>
+      
+    
+      </div>
+      <ion-reorder slot="end"></ion-reorder>
+    </ion-item>
+
+    <ion-item-options side="end">
+      <ion-item-option color="tertiary" expandable>
+        Archive
+      </ion-item-option>
+    </ion-item-options>
+  </ion-item-sliding>
           
               
-              <label (click)="presentModal(item)" style=" position: relative; margin: 0 0 15%;width: 100%; border: solid black 1px; padding: 0 0 0 5%" >
-                <ion-label style="margin-bottom: 5%; padding: 3% 0 0 0;">
-                  <h2>Nome</h2>
-                  <p >
-                    {{item?.name || 'Digite o nome'}}
-                  </p>
-            
-                </ion-label>
-              <ion-label style="margin-bottom: 5%;">
-                <h2>Descrição</h2>
-                <p style="padding: 0 15% 0 0;" >
-                  {{item?.description || 'Sem descrição'}}
-                </p>
-          
-              </ion-label>
-              <ion-label style="margin-bottom: 5%;">
-                <h2>Prazo</h2>
-              <p 
-              >
-
               
-                {{item?.date | date :  'dd/MM/yyyy'   }} 
-
-              </p>
-              <p *ngIf="!item.date">{{'Sem prazo'}}</p>
-              </ion-label>
-            
-            </label>
             
             
         
-            <div class="actions" style="text-align: center;">
+           <div class="actions" style="text-align: center;">
               
               <ion-icon color="danger" (click)="delete(item)" name="trash-outline"></ion-icon>
-        <ion-icon color="success div-03" (click)="conclud($event,item)" name="checkmark-circle-outline"></ion-icon>
+               <ion-icon color="success div-03" (click)="conclud($event,item)" name="checkmark-circle-outline"></ion-icon>
               
             </div>
-            <ion-reorder slot="end"></ion-reorder>
             
             <!-- <ion-radio slot="start" value="buford"></ion-radio> -->
-          </ion-item>
+          </div>
           
         </ion-reorder-group>
+        
       </ion-list>
+      <ion-item-sliding>
+        <ion-item-options side="start">
+          <ion-item-option (click)="favorite(item)">Favorite</ion-item-option>
+          <ion-item-option color="danger" (click)="share(item)">Share</ion-item-option>
+        </ion-item-options>
+
+        </ion-item-sliding>
       <!-- </ion-slide>
         <ion-slide>
           <h1>Slide 2</h1>

@@ -8,15 +8,13 @@ p{
     font-size: 16px;
     line-height: 1.5;
 }
-ion-reorder-group {
-    position: relative;
-
-}.actions{
+.actions{
+   display: flex;
     position: absolute;
-    bottom: -5%;
-    width: 100%;
-    transform: translate(-2%);
-    height: 90px;
+    bottom: -0%;
+    transform: translateX(-50%);
+    right: 40%;
+
 }
 
 ion-slides {
@@ -25,12 +23,3 @@ ion-slides {
     display: block;
   }
 
-  ion-reorder{
-      position: absolute;
-      right: 0;
-      margin: 0 10%;
-      top: 40%;
-      bottom: 50%;
-      transform: translate(0, -50%);
-      
-  }
