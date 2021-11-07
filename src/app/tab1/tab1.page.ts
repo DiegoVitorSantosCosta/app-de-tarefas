@@ -201,7 +201,7 @@ export class Tab1Page {
   
 }
 showSplashScreen() {
-  alert('lskdfj')
+
   SplashScreen.show({
 
     autoHide: true,
